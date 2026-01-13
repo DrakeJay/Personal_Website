@@ -6,14 +6,14 @@
 }
 
 :root {
-    --primary-color: #311c04;
-    --secondary-color: #382c0a;
+    --primary-color: #ffffff;
+    --secondary-color: #c9c157;
     --accent-color: #ff6b6b;
     --dark-bg: #000000;
-    --light-bg: #f8f9fa;
-    --text-dark: #2c3e50;
+    --light-bg: #ffffff;
+    --text-dark: #ffffff;
     --text-light: #ffffff;
-    --card-bg: #ffffff;
+    --card-bg: #000000;
     --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     --shadow-hover: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
@@ -22,9 +22,34 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     color: var(--text-dark);
-    background: linear-gradient(135deg, #2b2b2b 0%, #2b261f 100%);
+    background: linear-gradient(135deg, rgba(43, 43, 43, 0.7) 0%, rgba(43, 38, 31, 0.7) 100%);
     min-height: 100vh;
+    position: relative;
 }
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000000;
+    background-image: url('images/FreyaBG.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    z-index: -1;
+    opacity: 0;
+    animation: backgroundFadeIn 1s ease-in forwards;
+}
+    
+
+
+
+
+
 
 /* Header & Navigation */
 header {
@@ -73,7 +98,7 @@ nav {
 main {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 2rem;
+    padding: 0rem;
 }
 
 
@@ -82,6 +107,7 @@ main {
 /* Hero Section */
 .hero {
     background: var(--card-bg);
+    opacity: 0.8;
     border-radius: 0px;
     padding: 1rem 1rem;
     margin: 1rem 0;
@@ -90,17 +116,36 @@ main {
     /*animation: fadeIn 1s ease-in;*/
 }
 
+.name-image-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-bottom: 0rem;
+}
+
 .hero-content h2 {
-    font-size: 3rem;
+    font-size: 4rem;
     color: var(--primary-color);
-    margin-bottom: 1rem;
+    margin: 0;
+}
+
+.profile-image {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 20%;
+    border: 4px solid var(--secondary-color);
+    box-shadow: var(--shadow);
 }
 
 .intro-text {
     font-size: 1.25rem;
     color: var(--text-dark);
+    display: inline;
     max-width: 600px;
     margin: 0 auto;
+    
     
 }
 
@@ -115,12 +160,17 @@ main {
 .intro-section,
 .hobbies-section,
 .personality-section {
+    
     background: var(--card-bg);
     border-radius: 0px;
     padding: 1rem;
     margin: 1rem 0;
     box-shadow: var(--shadow);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+
+
+    
 }
 
 .intro-section:hover,
@@ -270,12 +320,15 @@ main {
 .content-card h2 {
     color: var(--primary-color);
     font-size: 1.5rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0rem;
+    padding: 1rem;
 }
 
 .content-card p {
     color: var(--text-dark);
     line-height: 1.8;
+    padding: 1rem;
+
 }
 
 /* Back Button */
@@ -304,7 +357,7 @@ main {
 
 /* Footer */
 footer {
-    background: var(--dark-bg);
+    
     color: var(--text-light);
     text-align: center;
     padding: 2rem;
@@ -327,6 +380,15 @@ footer p {
     }
 }
 
+@keyframes backgroundFadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
 
 
 
@@ -345,8 +407,19 @@ footer p {
         gap: 1rem;
     }
 
+    .name-image-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
     .hero-content h2 {
         font-size: 2rem;
+    }
+
+    .profile-image {
+        width: 150px;
+        height: 150px;
+        align-self: flex-end;
     }
 
     .intro-text {
@@ -387,6 +460,11 @@ footer p {
 
     .hero-content h2 {
         font-size: 1.5rem;
+    }
+
+    .profile-image {
+        width: 120px;
+        height: 120px;
     }
 
     .intro-section,
